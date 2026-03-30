@@ -35,6 +35,14 @@ func Snake(text string) string {
 
 func Reverse(text string) string {
     words := strings.Fields(text)
+    for i, w := range words {
+        runes := []rune(w)
+        for a := 0; a < len(runes)/2; a++ {
+            b := len(runes) - 1 - a
+            runes[a], runes[b] = runes[b], runes[a]
+        }
+        words[i] = string(runes)
+    }
 
     return strings.Join(words, " ")
 }
@@ -86,7 +94,7 @@ func main() {
 				fmt.Println("→", Capitalise(text))
 			}
 			continue
-			
+
 		case 4:
 			if text == "" {
 				fmt.Println("✗ No text provided. Usage: title <text>")
