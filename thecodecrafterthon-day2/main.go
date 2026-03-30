@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func main() {
 
+	fmt.Println("THE BASE CONVERTER")
 	for {
 		var hex, bin, dec string
 
@@ -25,7 +27,7 @@ func main() {
 
 			dec, err := strconv.ParseInt(hex, 16, 64)
 			if err != nil {
-				fmt.Println("=INVALID DEC VALUE=")
+				fmt.Println("=INVALID HEX VALUE=")
 			}
 			fmt.Println("=ANSWER=", dec)
 			continue
@@ -36,7 +38,7 @@ func main() {
 
 			dec, err := strconv.ParseInt(bin, 2, 64)
 			if err != nil {
-				fmt.Println("=INVALID DEC VALUE=")
+				fmt.Println("=INVALID BIN VALUE=")
 			}
 			fmt.Println("=ANSWER=", dec)
 			continue
@@ -45,11 +47,15 @@ func main() {
 			fmt.Print("=INPUT DEC VALUE=: ")
 			fmt.Scan(&dec)
 			
-			dec, err := strconv.ParseInt(dec, 2, 64)
+			dec, err := strconv.ParseInt(dec, 10, 64)
 			if err != nil {
 				fmt.Println("=INVALID DEC VALUE=")
 			}
-			return strconv.FormatInt(2, 64)
+			hexN := strconv.FormatInt(dec, 16)
+			binN := strconv.FormatInt(dec, 2)
+			fmt.Println("=ANSWER=", binN)
+			fmt.Println("=ANSWER=", strings.ToUpper(hexN))
+
 			continue
 
 		case 4:
@@ -58,6 +64,7 @@ func main() {
 
 		default:
 			fmt.Println("=*OUT OF BASES RAGNE", "START AGAIN*=")
+			continue
 		}
 		break
 	}
