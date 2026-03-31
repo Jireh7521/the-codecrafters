@@ -6,6 +6,7 @@ import (
 	"bufio"
 	"os"
 	"regexp"
+	"unicode"
 )
 
 func ToUpper(text string) string {
@@ -21,9 +22,39 @@ func Capitalise(text string) string {
 	return strings.Title(u)
 }
 
-func Title(text string) string {
-    return strings.Title(text)
+var smallWords = []string{
+	"a", "an", "the", "and", "but", "or", "for", "nor",
+	"on", "at", "to", "by", "in", "of", "up", "as",
+	"is", "yet", "it",
 }
+
+func checkSmallWords(word string) bool {
+	for _, w := range smallWords {
+		if w == word {
+			return true
+		}
+	}
+	return false
+}
+
+func Title(word string) string {
+	words := strings.Fields(word)
+
+	for i, w := range words {
+		lower := strings.ToLower(w)
+
+		if i == 0 || !checkSmallWords(lower) {
+			runes := []rune(lower)
+			runes[0] = unicode.ToUpper(runes[0])
+			words[i] = string(runes)
+		} else {
+			words[i] = lower
+		}
+	}
+
+	return strings.Join(words, " ")
+}
+
 
 func Snake(text string) string {
     text = strings.ToLower(text)
