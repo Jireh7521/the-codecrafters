@@ -1,3 +1,8 @@
+// CodeCrafters — Operation Gopher Protocol
+// Module: File Pipeline
+// Author: [Samuel Jireh]
+// Squad:  [Gophers]
+
 // ═══════════════════════════════════════════
 // SQUAD PIPELINE CONTRACT
 // Squad: Gophers
