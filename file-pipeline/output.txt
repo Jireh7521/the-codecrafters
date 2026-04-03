@@ -1,0 +1,31 @@
+Gopher's Sentinel Field Report - Processed
+1. HELLO WORLD
+2. ✦ ACTION: fix login bug
+3. This Is A Critical Alert
+4. QUIET LINE HERE
+5. now line this REVERSE
+6. ✦ ACTION:   clean database
+7. Another Shouting Line
+8. ANOTHER NORMAL LINE
+9. HERE TRIGGER NOT SHOULD REVERSE
+10. THIS LINE IS LOWERCASE
+11. sentence this reverse please REVERSE
+12. MIXED Case Line
+13. SPACED OUT LINE
+14. ✦ ACTION:deploy to production
+15. All Good Here
+16. LOWERCASE AGAIN
+17. four three two one REVERSE
+18. words spaced REVERSE
+19. ✦ ACTION:    update docs
+20. Normal Line
+21. YET ANOTHER LOWERCASE LINE
+22. This Is Another Alert
+23. RANDOM TEXT
+24. case test final REVERSE
+
+Summary:
+✦ Lines read    : 25
+✦ Lines written : 24
+✦ Lines removed : 1
+✦ Rules applied : 5

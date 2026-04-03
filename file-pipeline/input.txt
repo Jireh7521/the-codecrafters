@@ -1,1 +1,25 @@
-WHAT IS YOUR NAME (low)
+   hello world   
+TODO: fix login bug
+THIS IS A CRITICAL ALERT
+quiet line here
+REVERSE this line now
+
+   TODO:   clean database
+ANOTHER SHOUTING LINE
+another normal line
+reverse should not trigger here
+this line is lowercase
+REVERSE please reverse this sentence
+MIXED Case Line
+   spaced out line   
+TODO:deploy to production
+ALL GOOD HERE
+lowercase again
+REVERSE one two three four
+   REVERSE    spaced    words   
+TODO:    update docs
+NORMAL LINE
+yet another lowercase line
+THIS IS ANOTHER ALERT
+random text
+REVERSE final test case
