@@ -48,71 +48,6 @@ import (
 	"strings"
 )
 
-func ToLower(text string) string {
-	return strings.ToLower(text)
-}
-
-func Title(text string) string {
-	u := strings.ToLower(text)
-	return strings.Title(u)
-}
-
-func Reverse(text string) string {
-	words := strings.Fields(text)
-	for i, w := range words {
-		runes := []rune(w)
-		for a := 0; a < len(runes)/2; a++ {
-			b := len(runes) - 1 - a
-			runes[a], runes[b] = runes[b], runes[a]
-		}
-		words[i] = string(runes)
-	}
-
-	return strings.Join(words, " ")
-}
-
-func isLetter(c byte) bool {
-	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-}
-
-// func isDigit(c byte) bool {
-// 	return c >= '0' && c <= '9'
-// }
-
-// func isSpace(c byte) bool {
-// 	return c == ' ' || c == '\n' || c == '\t'
-// }
-
-func isWord(s string) bool {
-	for i := 0; i < len(s); i++ {
-		if isLetter(s[i]) {
-			return true
-		}
-	}
-	return false
-}
-
-func applyModifier(tokens []string, cmd string, n int) []string {
-	count := 0
-
-	for i := len(tokens) - 1; i >= 0 && count < n; i-- {
-		if !isWord(tokens[i]) {
-			continue
-		}
-
-		switch cmd {
-		case "up":
-			tokens[i] = strings.ToUpper(tokens[i])
-		case "low":
-			tokens[i] = strings.ToLower(tokens[i])
-		}
-
-		count++
-	}
-
-	return tokens
-}
-
 func main() {
 	if len(os.Args) != 3 {
 		fmt.Println("Usage: go run . input.txt output.txt")
@@ -128,19 +63,31 @@ func main() {
 		return
 	}
 
-	text := string(data)
+	lines := strings.Split(string(data), "\n")
 
-	tokens := ToLower(text)
-	tokens = Title(tokens)
-	tokens = Reverse(tokens)
+	var processed []string
 
-	result := (tokens)
+	summary := Summary{
+		LinesRead: len(lines),
+	}
+
+	for _, line := range lines {
+		newLine, ok := processLine(line)
+		if !ok {
+			summary.LinesRemoved++
+			continue
+		}
+		processed = append(processed, newLine)
+	}
+
+	summary.LinesWritten = len(processed)
+
+	finalOutput := buildOutput(processed, summary)
+
+	result := strings.Join(finalOutput, "\n")
 
 	err = os.WriteFile(outputFile, []byte(result), 0644)
 	if err != nil {
 		fmt.Println("Error writing file:", err)
 	}
-
-	// fmt.Println(ToLower(inputFile))
-
 }
