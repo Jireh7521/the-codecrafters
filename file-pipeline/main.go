@@ -89,5 +89,11 @@ func main() {
 	err = os.WriteFile(outputFile, []byte(result), 0644)
 	if err != nil {
 		fmt.Println("Error writing file:", err)
+
 	}
+	fmt.Println("✦ Lines read: ", summary.LinesRead)
+	fmt.Println("✦ Lines written: ", summary.LinesWritten)
+	fmt.Printf("✦ Lines removed: %v\n \n", summary.LinesRemoved)
+	fmt.Println("✦ Rules applied : 5" )
+	
 }
